@@ -1,6 +1,5 @@
 import { drizzle } from 'drizzle-orm/bun-sqlite';
 import { Database } from 'bun:sqlite';
-import { DB_PATH } from '$env/static/private';
 
-const sqlite = new Database(DB_PATH);
+const sqlite = new Database('file:./db/db.sqlite');
 export const db = drizzle(sqlite);

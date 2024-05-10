@@ -1,0 +1,11 @@
+[phases.setup]
+nixPkgs = ['nodejs_18', 'bun']
+
+[phases.install]
+cmds = ['bun i']
+
+[phases.build]
+cmds = ['bun run build', "cd build && bun i --production"]
+
+[start]
+cmd = 'bun run ./build/index.js'
