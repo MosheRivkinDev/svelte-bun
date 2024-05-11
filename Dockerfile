@@ -1,18 +1,20 @@
-# Use the official Bun image (see all versions at [1](https://hub.docker.com/r/oven/bun/tags))
-FROM oven/bun:1
+FROM oven/bun:alpine
 
-# Set the working directory
-WORKDIR /usr/src/app
+WORKDIR /web
+COPY ./src ./src
+COPY ./db ./db
 
-# Install dependencies
-COPY package.json bun.lockb ./
-RUN bun install --frozen-lockfile
+WORKDIR /web/db
+RUN bun install
 
-# Copy all project files into the image
-COPY . .
 
-# Set the production environment
-ENV NODE_ENV=production
+WORKDIR /web/src
+RUN bun install
+RUN bun run build
+RUN cp -r ./build /web/app
 
-# Run the app
-CMD ["bun", "run", "index.js"]
+
+WORKDIR /web/app
+EXPOSE 3000
+
+CMD ["bun", "run", "start"]

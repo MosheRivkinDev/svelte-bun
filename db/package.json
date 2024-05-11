@@ -1,0 +1,15 @@
+{
+  "scripts": {
+    "gen": "bunx drizzle-kit generate",
+    "sync": "bunx drizzle-kit migrate",
+    "update": "bun run db:gen && bun run db:sync",
+    "studio": "bunx drizzle-kit studio"
+  },
+  "name": "db",
+  "type": "module",
+  "dependencies": {
+    "@libsql/client": "^0.6.0",
+    "drizzle-kit": "^0.21.1",
+    "drizzle-orm": "^0.30.10"
+  }
+}

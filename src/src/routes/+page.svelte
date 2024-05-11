@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-	import { number, parse } from 'valibot';
+	import { parse } from 'valibot';
 	import { CreateUserSchema } from './vbot';
 	export let data;
 	let create_user_form: HTMLFormElement;
@@ -59,3 +59,4 @@
 		}
 	}}
 ></form>
+test test test test
